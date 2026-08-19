@@ -133,7 +133,12 @@ export async function runDistributedExample(): Promise<void> {
   // Run simulation on both peers
   console.log('Running synchronized simulation...\n');
 
+  let hashesRemainEqual = true;
+
   for (let tick = 0; tick < 20; tick++) {
+    // MemoryTransport delivers messages asynchronously; let both peers receive
+    // the same input set before advancing the next deterministic tick.
+    await new Promise<void>(resolve => setTimeout(resolve, 0));
     engine1.executeTick();
     engine2.executeTick();
 
@@ -151,9 +156,14 @@ export async function runDistributedExample(): Promise<void> {
       
       if (hash1 && hash2) {
         const match = hash1.every((b, i) => b === hash2[i]);
+        hashesRemainEqual = hashesRemainEqual && match;
         console.log(`  Hashes match: ${match ? '✓' : '✗'}`);
       }
     }
+  }
+
+  if (!hashesRemainEqual) {
+    throw new Error('Distributed peers diverged during the synchronization example');
   }
 
   console.log('\nDistributed simulation complete!');

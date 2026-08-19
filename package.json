@@ -42,8 +42,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "node --loader ts-node/esm --test src/**/*.test.ts",
-    "verify": "node dist/tools/determinism-test.js",
+    "test": "npm run build && node dist/test-all.js",
+    "verify": "npm run build && node dist/tools/determinism-test.js",
     "clean": "rimraf dist"
   },
   "keywords": [

@@ -2,7 +2,7 @@
 
 **Mission**: Bitwise-deterministic distributed simulation where independent nodes executing the same inputs always converge to identical state.
 
-[![Status](https://img.shields.io/badge/status-complete-success)]() [![Build](https://img.shields.io/badge/build-passing-success)]() [![License](https://img.shields.io/badge/license-MIT-blue)]()
+[![Status](https://img.shields.io/badge/status-in%20development-yellow)]() [![License](https://img.shields.io/badge/license-MIT-blue)]()
 
 ## Overview
 
@@ -21,6 +21,14 @@ npm install
 npm run build
 node dist/examples/counter.js
 ```
+
+Run the deterministic verification after installing dependencies:
+
+```bash
+npm run verify
+```
+
+The project is currently an in-development framework. Its determinism and networking claims still require broader cross-platform and multi-node test coverage before a `complete` status is appropriate.
 
 ## Core Invariants
 
