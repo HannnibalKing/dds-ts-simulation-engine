@@ -217,7 +217,7 @@ node dist/examples/distributed.js
 node dist/test-all.js
 ```
 
-## Rules for AI Contributors
+## Engineering Invariants
 
 When continuing this project:
 
